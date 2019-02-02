@@ -27,6 +27,7 @@ appServer.use((req,res,next)=>{
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
+    //se incorporan las cabeceras cors en las respuestas de http 
     
 })
 

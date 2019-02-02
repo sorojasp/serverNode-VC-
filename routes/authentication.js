@@ -8,6 +8,12 @@
 const express = require("express");
 const router = express.Router();
 
+router.get('/pruebaAuth', (req,res,next)=>{
+    res.json({
+        nombre:"STIVEN ROJAS PULIDO"
+    })
+})
+
 
 
 

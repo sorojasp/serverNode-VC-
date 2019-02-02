@@ -3,7 +3,7 @@
 const express = require("express");
 const appServer = express();
 const router = express.Router();
-const conDB = require("../database")
+const conDB = require("../models/database")
 
 
 
