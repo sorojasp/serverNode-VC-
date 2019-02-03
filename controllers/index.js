@@ -1,7 +1,14 @@
 const mysql = require ("mysql");
 const express = require("express");
+const appServer=express();
+
 const con =require("../models/database")
 const modelPerson =require("../models/persona/persona_model")
+const path = require("path");
+const static =require ("static");
+
+
+const sendFiles=require("../main") 
 
 const  getData=(req,res,next)=>{
     res.send("HolaDesdeControlador")    
@@ -21,26 +28,28 @@ const sirveJson=(req,res,next)=>{
 
 
 const dataPet=(req,res,next)=>{
-         
+    
   
     }
 
 
-    const consultaData =(req,res)=>{
-        
-            con.query("SELECT * FROM Personas ",  (err, result, fields)=> {
-              if (err) throw err;
-              console.log(result);
-              res.send(result)
-            
-              
-            });
-}
+    const consultaData = async()=>{
+       let resultConsultPerson=await modelPerson.consultPersonDB();
+       return resultConsultPerson;
+
+    }
 
 const contrInsertDataPer = async(Nombre_Persona,Codigo_Persona)=>{
-     await modelPerson.insertPersonDB(Nombre_Persona,Codigo_Persona)
+     let resultInsertPerson=await modelPerson.insertPersonDB(Nombre_Persona,Codigo_Persona);
+     return resultInsertPerson;
 
 }
+
+
+
+
+
+
    
 
 
@@ -49,5 +58,5 @@ module.exports={
     dataPet,
     consultaData,
     sirveJson,
-    contrInsertDataPer 
+    contrInsertDataPer
 }

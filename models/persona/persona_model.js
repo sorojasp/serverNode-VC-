@@ -34,8 +34,7 @@ let insertPersonDB=(nombrePersona, codigoPersona)=>{
        var sql = "INSERT INTO Personas (Nombre_Persona, Codigo_Persona) VALUES ('" + nombrePersona + "', '" +  codigoPersona + "')";
        con.query(sql, (err)=> {
            if (err){reject(`you was a problem **Nombre:${nombrePersona}- Codigo:${codigoPersona}**`);}
-           
-           resolve(`****you was a problem **Nombre:${nombrePersona}- Codigo:${codigoPersona}****`);
+           resolve(`****The data: Nombre:${nombrePersona}- Codigo:${codigoPersona},  was inserted ****`);
        
      });
      
@@ -49,7 +48,12 @@ let deletePersonDB=(codigoPersona)=>{
 }
 
 let consultPersonDB=()=>{
-
+    return new Promise((resolve,reject)=>{
+    con.query("SELECT * FROM Personas", function (err, result, fields) {
+        if (err) {reject("you was a problem with the consult")}
+        resolve (result)
+      });
+    })
 }
 
 
@@ -58,6 +62,7 @@ module.exports={
     insertPersonDB,
     deletePersonDB,
     consultPersonDB
+    
 }
 
 
