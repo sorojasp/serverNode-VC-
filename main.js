@@ -59,7 +59,8 @@ appServer.use('/links',routesIndex)
 
 appServer.use(express.static(path.join(__dirname,'public')));
 appServer.use('/index/public',express.static(path.join(__dirname,'public')));
-
+appServer.use('/public/post',express.static(path.join(__dirname,'public/public_post')));
+appServer.use('/public/get',express.static(path.join(__dirname,'public/public_get')));
 //*********************When not find the file ************************ */
 
 appServer.get('*',function(req,res){
