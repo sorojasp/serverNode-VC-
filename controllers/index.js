@@ -1,3 +1,4 @@
+
 const mysql = require ("mysql");
 const express = require("express");
 const appServer=express();
@@ -6,6 +7,11 @@ const con =require("../models/database")
 const modelPerson =require("../models/persona/persona_model")
 const path = require("path");
 const static =require ("static");
+const  handleDates   = require("../funcionalidades/manejoFechas/manejoFechas");
+let handleDatesX = handleDates.HandleDate;
+
+
+
 
 
 const sendFiles=require("../main") 
@@ -13,6 +19,10 @@ const sendFiles=require("../main")
 const  getData=(req,res,next)=>{
     res.send("HolaDesdeControlador")    
 }
+
+
+
+
 
 const sirveJson=(req,res,next)=>{
     res.json([{
@@ -45,6 +55,87 @@ const contrInsertDataPer = async(Nombre_Persona,Codigo_Persona)=>{
 
 }
 
+const manejaDatosConflictoLaboral = (DataContratoLaboral) =>{
+    return new Promise((resolve,reject)=>{
+        if(DataContratoLaboral!=undefined){
+            //console.log(DataContratoLaboral.fechaInicioContrato)
+             
+            
+            let handleDates1 = new handleDatesX(DataContratoLaboral.fechaInicioContrato);
+            handleDates1.ToChangeFormatDate();
+            resolve(handleDates1.ToChangeFormatDate());
+
+        }else{
+            reject("**problem**")
+        }
+    })
+}
+
+const manejaDatosConflictoDSJC= (DataContratoDSJC) =>{
+    return new Promise((resolve,reject)=>{
+        if(DataContratoDSJC!=undefined){
+            
+            resolve(DataContratoDSJC)
+
+        }else{
+            reject("**problem**")
+        }
+    })
+}
+
+const manejaDatosConflictoPagoSalario= (DataContratoPagoSalario) =>{
+    return new Promise((resolve,reject)=>{
+        if(DataContratoPagoSalario!=undefined){
+            
+            resolve(DataContratoPagoSalario)
+
+        }else{
+            reject("**problem**")
+        }
+    })
+}
+
+const manejaDatosConflictoPagoVacaciones= (DataContratoPagoVacaciones) =>{
+    return new Promise((resolve,reject)=>{
+        if(DataContratoPagoVacaciones!=undefined){
+            
+            resolve(DataContratoPagoVacaciones)
+
+        }else{
+            reject("**problem**")
+        }
+    })
+}
+
+
+
+
+const manejaDatosConflictoPagoCesantias= (DataContratoPagoCesantias) =>{
+    return new Promise((resolve,reject)=>{
+        if(DataContratoPagoCesantias!=undefined){
+            
+            resolve(DataContratoPagoCesantias)
+
+        }else{
+            reject("**problem**")
+        }
+    })
+}
+
+const manejaDatosConflictoPagoPrimas= (DataContratoPagoPrimas) =>{
+    return new Promise((resolve,reject)=>{
+        if(DataContratoPagoPrimas!=undefined){
+            
+            resolve(DataContratoPagoPrimas)
+
+        }else{
+            reject("**problem**")
+        }
+    })
+}
+
+
+
 
 
 
@@ -58,5 +149,11 @@ module.exports={
     dataPet,
     consultaData,
     sirveJson,
-    contrInsertDataPer
+    contrInsertDataPer,
+    manejaDatosConflictoLaboral,
+    manejaDatosConflictoDSJC,
+    manejaDatosConflictoPagoSalario,
+    manejaDatosConflictoPagoVacaciones,
+    manejaDatosConflictoPagoCesantias,
+    manejaDatosConflictoPagoPrimas
 }

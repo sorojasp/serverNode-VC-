@@ -32,6 +32,70 @@ router.post('/tryPost',(req,res,next)=>{
         console.log(err)
     })
 })
+
+router.post('/LaborApp/PruebaGuardarContratoLaboral',(req,res,next)=>{
+    controllers.manejaDatosConflictoLaboral(req.body).then(result=>{
+        console.log(result)
+        res.send(result)
+    }).catch(err=>{
+        console.log(err)
+        res.send(err)
+    })
+})
+
+router.post('/LaborApp/PruebaGuardardetalleConflictoDSJC',(req,res,next)=>{
+    controllers.manejaDatosConflictoDSJC(req.body).then(result=>{
+        console.log(result)
+        res.send(result)
+    }).catch(err=>{
+        res.send(err)
+    })
+})
+
+
+router.post('/LaborApp/PruebaGuardarDetalleConflictoNoPagoSalario',(req,res,next)=>{
+    controllers.manejaDatosConflictoPagoSalario(req.body).then(result=>{
+        console.log(result)
+        res.send(result)
+    }).catch(err=>{
+        res.send(err)
+    })
+})
+
+
+router.post('/LaborApp/PruebaGuardarConflictoPagoVacaciones',(req,res,next)=>{
+    controllers.manejaDatosConflictoPagoVacaciones(req.body).then(result=>{
+        console.log(result)
+        res.send(result)
+    }).catch(err=>{
+        res.send(err)
+    })
+})
+
+
+router.post('/LaborApp/PruebaGuardarConflictoPagoCesantias',(req,res,next)=>{
+    controllers.manejaDatosConflictoPagoCesantias(req.body).then(result=>{
+        console.log(result)
+        res.send(result)
+    }).catch(err=>{
+        res.send(err)
+    })
+})
+
+
+router.post('/LaborApp/PruebaGuardarConflictoPrimas',(req,res,next)=>{
+    controllers.manejaDatosConflictoPagoPrimas(req.body).then(result=>{
+        console.log(result)
+        res.send(result)
+    }).catch(err=>{
+        res.send(err)
+    })
+})
+
+
+
+
+   
     
  
 

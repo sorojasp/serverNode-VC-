@@ -1,4 +1,5 @@
- class Persona{
+
+class Persona{
     constructor(Nombre_Persona, Codigo_Persona){
        this.Nombre_Persona=Nombre_Persona;
        this.Codigo_Persona=Codigo_Persona; 
@@ -24,6 +25,8 @@
     }
 
 }
+
+
 
 const personaDataBase= new Persona("Stiven Rojas",80865137);
 const con =require("../database")
